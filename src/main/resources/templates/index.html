@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <title>Doogle - dog shelter management</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Doogle</a>
+            <span class="navbar-text text-end">
+              Dog shelter management
+            </span>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/">Shelters</a></li>
+<!--                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>-->
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page content-->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-8">
+            <div class="row">
+                <h3 class="col-12">Shelters</h3>
+                <div th:each="shelter : ${shelters}" class="col-4 card text-center m-1">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${shelter.name}">Name</h5>
+                        <h6 class="card-subtitle mb-2 text-muted" th:text="${shelter.location}">Location</h6>
+                        <a href="#" th:href="@{viewShelter(id=${shelter.id})}" class="card-link">View Shelter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <h3>Add Shelter</h3>
+            <form action="addShelter" method="POST" class="form">
+                <div class="form-group">
+                    <label class="col-4" for="shelterName">Name</label>
+                    <input class="col-8 form-control" type="text" id="shelterName" name="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="col-4" for="shelterLocation">Location</label>
+                    <input class="col-8 form-control" type="text" id="shelterLocation" name="location"/>
+                </div>
+                <div class="form-group">
+                    <label class="col-4" for="shelterWebsite">Website</label>
+                    <input class="col-8 form-control" type="text" id="shelterWebsite" name="website"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Shelter</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!--<footer class="py-5 bg-dark">-->
+<!--    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Sam Hudson 2022</p></div>-->
+<!--</footer>-->
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+</body>
+</html>
